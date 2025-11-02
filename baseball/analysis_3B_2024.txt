@@ -1,0 +1,36 @@
+
+MLB 2024 Plate Appearance (PA) Breakdown Analysis - Third Base (3B)
+
+## 1. Objective
+
+To create a comprehensive and statistically consistent probability model of all possible outcomes of a plate appearance for the Third Base (3B) position, based on the provided 2024 data.
+
+## 2. Methodology
+
+1.  **Data Source:** All initial counts (`PA`, `H`, `BB`, `SO`, etc.) are taken from the `mlb20243b.csv` file.
+
+2.  **Event Definition:** We define a set of mutually exclusive events (Hits, Walks, Strikeouts, and Other Outs) whose counts sum exactly to the total Plate Appearances for this position.
+
+3.  **Batted Out Estimation:** As position-specific batted-out data was unavailable, we calculated the total "Other Outs" (non-strikeout outs) for this position. This total was then apportioned into `Flyouts`, `Groundouts`, and `Line Drive Outs` using the league-wide proportions derived from the `stats2024.csv` file. This provides a reasonable estimate for the batted-out distribution.
+
+4.  **Normalization & Logits:** All final probabilities are calculated to 10 decimal places and then normalized to ensure the sum is exactly 1.0. Corresponding logits (`log(probability)`) are also calculated for use in statistical modeling.
+
+## 3. Data Breakdown for Third Base (3B)
+
+---
+**Total Plate Appearances (PA): 19,733**
+---
+
+| Event | Count | Final Normalized Probability | Logit (log(P)) |
+| :--- | :--- | :--- | :--- |
+| **Walk (BB)** | 1,545 | 0.0782952415 | -2.54721 |
+| **Strikeout (SO)** | 4,187 | 0.2121826382 | -1.55031 |
+| **Hit By Pitch (HBP)** | 208 | 0.0105407186 | -4.55291 |
+| **Single (1B)** | 2,821 | 0.1429630568 | -1.94517 |
+| **Double (2B)** | 846 | 0.0428718390 | -3.14913 |
+| **Triple (3B)** | 67 | 0.0033953276 | -5.68532 |
+| **Home Run (HR)** | 568 | 0.0287842699 | -3.54791 |
+| **Flyout** | 3,105 | 0.1573506309 | -1.84932 |
+| **Groundout** | 5,042 | 0.2555110728 | -1.36453 |
+| **Line Drive Out** | 1,344 | 0.0681041945 | -2.68673 |
+

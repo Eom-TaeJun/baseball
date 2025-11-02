@@ -1,0 +1,36 @@
+
+MLB 2024 Plate Appearance (PA) Breakdown Analysis - Left Field (LF)
+
+## 1. Objective
+
+To create a comprehensive and statistically consistent probability model of all possible outcomes of a plate appearance for the Left Field (LF) position, based on the provided 2024 data.
+
+## 2. Methodology
+
+1.  **Data Source:** All initial counts (`PA`, `H`, `BB`, `SO`, etc.) are taken from the `mlb2024lf.csv` file.
+
+2.  **Event Definition:** We define a set of mutually exclusive events (Hits, Walks, Strikeouts, and Other Outs) whose counts sum exactly to the total Plate Appearances for this position.
+
+3.  **Batted Out Estimation:** As position-specific batted-out data was unavailable, we calculated the total "Other Outs" (non-strikeout outs) for this position. This total was then apportioned into `Flyouts`, `Groundouts`, and `Line Drive Outs` using the league-wide proportions derived from the `stats2024.csv` file. This provides a reasonable estimate for the batted-out distribution.
+
+4.  **Normalization & Logits:** All final probabilities are calculated to 10 decimal places and then normalized to ensure the sum is exactly 1.0. Corresponding logits (`log(probability)`) are also calculated for use in statistical modeling.
+
+## 3. Data Breakdown for Left Field (LF)
+
+---
+**Total Plate Appearances (PA): 20,079**
+---
+
+| Event | Count | Final Normalized Probability | Logit (log(P)) |
+| :--- | :--- | :--- | :--- |
+| **Walk (BB)** | 1,726 | 0.0859604562 | -2.45393 |
+| **Strikeout (SO)** | 4,700 | 0.2340754022 | -1.45211 |
+| **Hit By Pitch (HBP)** | 230 | 0.0114547537 | -4.46963 |
+| **Single (1B)** | 2,832 | 0.1410428806 | -1.95873 |
+| **Double (2B)** | 852 | 0.0424323921 | -3.15941 |
+| **Triple (3B)** | 106 | 0.0052791474 | -5.24361 |
+| **Home Run (HR)** | 575 | 0.0286368843 | -3.55321 |
+| **Flyout** | 2,964 | 0.1476169132 | -1.91314 |
+| **Groundout** | 4,812 | 0.2396533692 | -1.42855 |
+| **Line Drive Out** | 1,282 | 0.0638478012 | -2.75131 |
+

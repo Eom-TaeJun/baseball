@@ -1,0 +1,36 @@
+
+MLB 2024 Plate Appearance (PA) Breakdown Analysis - Designated Hitter (DH)
+
+## 1. Objective
+
+To create a comprehensive and statistically consistent probability model of all possible outcomes of a plate appearance for the Designated Hitter (DH) position, based on the provided 2024 data.
+
+## 2. Methodology
+
+1.  **Data Source:** All initial counts (`PA`, `H`, `BB`, `SO`, etc.) are taken from the `mlb2024dh.csv` file.
+
+2.  **Event Definition:** We define a set of mutually exclusive events (Hits, Walks, Strikeouts, and Other Outs) whose counts sum exactly to the total Plate Appearances for this position.
+
+3.  **Batted Out Estimation:** As position-specific batted-out data was unavailable, we calculated the total "Other Outs" (non-strikeout outs) for this position. This total was then apportioned into `Flyouts`, `Groundouts`, and `Line Drive Outs` using the league-wide proportions derived from the `stats2024.csv` file. This provides a reasonable estimate for the batted-out distribution.
+
+4.  **Normalization & Logits:** All final probabilities are calculated to 10 decimal places and then normalized to ensure the sum is exactly 1.0. Corresponding logits (`log(probability)`) are also calculated for use in statistical modeling.
+
+## 3. Data Breakdown for Designated Hitter (DH)
+
+---
+**Total Plate Appearances (PA): 20,373**
+---
+
+| Event | Count | Final Normalized Probability | Logit (log(P)) |
+| :--- | :--- | :--- | :--- |
+| **Walk (BB)** | 1,848 | 0.0907082904 | -2.40005 |
+| **Strikeout (SO)** | 4,935 | 0.2422323664 | -1.41782 |
+| **Hit By Pitch (HBP)** | 246 | 0.0120748049 | -4.41653 |
+| **Single (1B)** | 2,785 | 0.1366995533 | -1.99001 |
+| **Double (2B)** | 836 | 0.0410347028 | -3.19332 |
+| **Triple (3B)** | 50 | 0.0024542286 | -5.99981 |
+| **Home Run (HR)** | 756 | 0.0371079370 | -3.29396 |
+| **Flyout** | 2,918 | 0.1432287832 | -1.94334 |
+| **Groundout** | 4,737 | 0.2325136209 | -1.45883 |
+| **Line Drive Out** | 1,262 | 0.0619457124 | -2.78152 |
+
